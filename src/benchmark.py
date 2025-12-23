@@ -26,21 +26,58 @@ def print_algorithm_config(algo_name: str, params: Dict):
         print(f"  {key}: {value}")
 
 
-def print_metrics(results: Dict, n_rounds: int):
+def _instant_regret_per_round(game: RepeatedGame, actions: np.ndarray, opponent_actions: np.ndarray, role: str) -> np.ndarray:
+    actions = np.asarray(actions, dtype=int)
+    opponent_actions = np.asarray(opponent_actions, dtype=int)
+    if actions.shape != opponent_actions.shape:
+        raise ValueError("actions and opponent_actions must have same shape")
+    if actions.size == 0:
+        return np.array([], dtype=float)
+
+    if role == "row":
+        realized = game.payoff_matrix[actions, opponent_actions]
+        best = game.payoff_matrix[:, opponent_actions].max(axis=0)
+        return best - realized
+
+    if role == "col":
+        # actions are col actions, opponent_actions are row actions
+        realized = -game.payoff_matrix[opponent_actions, actions]
+        best = (-game.payoff_matrix[opponent_actions, :]).max(axis=1)
+        return best - realized
+
+    raise ValueError(f"Unknown role: {role!r}")
+
+
+def print_metrics(results: Dict, n_rounds: int, game: RepeatedGame, algo_role: str):
     final_policy = results['policies'][-1]
-    final_avg_regret = results['average_regrets'][-1]
     final_exploit = results['exploitabilities'][-1]
     final_entropy = -np.sum(final_policy * np.log(final_policy + 1e-10))
+
+    actions = np.asarray(results["actions"], dtype=int)
+    opp_actions = np.asarray(results["opponent_actions"], dtype=int)
+
+    external_cum = game.compute_regret(actions, opp_actions, role=algo_role)
+    external_avg = external_cum / max(1, int(n_rounds))
+    external_avg_pos = max(0.0, external_avg)
+
+    instant_cum = game.compute_instant_regret(actions, opp_actions, role=algo_role)
+    instant_avg = instant_cum / max(1, int(n_rounds))
     
     print(f"Final Policy:        {np.array2string(final_policy, precision=4, suppress_small=True)}")
-    print(f"Average Regret:      {final_avg_regret:.6f}")
+    print(f"Avg External Regret (best fixed; can be negative): {external_avg:.6f}")
+    print(f"Avg External Regret (clipped at 0):               {external_avg_pos:.6f}")
+    print(f"Avg Instant Regret (best per-round; >= 0):        {instant_avg:.6f}")
     print(f"Exploitability:      {final_exploit:.6f}")
     print(f"Policy Entropy:      {final_entropy:.6f}")
     
     last_100 = min(100, n_rounds)
-    avg_regret_last_100 = np.mean(results['average_regrets'][-last_100:])
+    # This is the *running* average external regret, averaged over the last 100 timesteps.
+    avg_external_running_last_100 = np.mean(results['average_regrets'][-last_100:])
     avg_exploit_last_100 = np.mean(results['exploitabilities'][-last_100:])
-    print(f"Avg Regret (last {last_100}): {avg_regret_last_100:.6f}")
+    inst_per_round = _instant_regret_per_round(game, actions, opp_actions, role=algo_role)
+    avg_instant_last_100 = float(np.mean(inst_per_round[-last_100:])) if inst_per_round.size else 0.0
+    print(f"Avg External Regret (running avg; last {last_100}): {avg_external_running_last_100:.6f}")
+    print(f"Avg Instant Regret (last {last_100} rounds):        {avg_instant_last_100:.6f}")
     print(f"Avg Exploit (last {last_100}): {avg_exploit_last_100:.6f}")
 
 
