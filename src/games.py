@@ -82,6 +82,34 @@ class RepeatedGame:
 
         raise ValueError(f"Unknown role: {role!r}")
 
+    def compute_instant_regret(
+        self,
+        actions: np.ndarray,
+        opponent_actions: np.ndarray,
+        role: PlayerRole = "row",
+    ) -> float:
+        # instant regret against the realized opponent action sequence
+        actions = np.asarray(actions, dtype=int)
+        opponent_actions = np.asarray(opponent_actions, dtype=int)
+        if actions.shape != opponent_actions.shape:
+            raise ValueError("actions and opponent_actions must have same shape")
+        if actions.size == 0:
+            return 0.0
+
+        if role == "row":
+            realized = self.payoff_matrix[actions, opponent_actions].sum()
+            best_each_round = self.payoff_matrix[:, opponent_actions].max(axis=0).sum()
+            return float(best_each_round - realized)
+
+        if role == "col":
+            row_actions = opponent_actions
+            col_actions = actions
+            realized = (-self.payoff_matrix[row_actions, col_actions]).sum()
+            best_each_round = (-self.payoff_matrix[row_actions, :]).max(axis=1).sum()
+            return float(best_each_round - realized)
+
+        raise ValueError(f"Unknown role: {role!r}")
+
     def compute_exploitability(self, policy: np.ndarray, role: PlayerRole = "row") -> float:
         # exploitability of a mixed strategy for either role in a zero-sum game
         p = np.asarray(policy, dtype=float)
