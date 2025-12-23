@@ -38,6 +38,9 @@ class PolicyGradient:
                  hidden_size: int = 64,
                  lr: float = 1e-3,
                  entropy_coef: float = 0.0,
+                 regret_matching_coef: float = 0.0,
+                 regret_matching_plus: bool = True,
+                 name: str = None,
                  use_baseline: bool = True,
                  baseline_momentum: float = 0.9,
                  role: PlayerRole = "row"):
@@ -45,11 +48,15 @@ class PolicyGradient:
         self.game = game
         self.n_actions = game.n_actions
         self.entropy_coef = entropy_coef
+        self.regret_matching_coef = regret_matching_coef
+        self.regret_matching_plus = regret_matching_plus
         self.use_baseline = use_baseline
         self.baseline_momentum = baseline_momentum
         self.role = role
         self._hidden_size = hidden_size
         self._lr = lr
+
+        self.name = name if name is not None else f'PolicyGradient(entropy={entropy_coef})'
         
         # initialize network
         self.policy_net = PolicyNetwork(self.n_actions, hidden_size)
@@ -61,6 +68,9 @@ class PolicyGradient:
         # baseline (EMA of payoffs)
         self.baseline = 0.0
         self._steps = 0
+
+        # regret-matching (full-information) accumulators
+        self.regret_sums = np.zeros(self.n_actions, dtype=float)
         
         # history
         self.actions_history = []
@@ -90,10 +100,10 @@ class PolicyGradient:
         self.policies_history.append(self.get_policy())
         
         # Update policy
-        loss = self._update(own_action, payoff)
+        loss = self._update(own_action, opponent_action, payoff)
         self.losses_history.append(loss)
         
-    def _update(self, action: int, payoff: float) -> float:
+    def _update(self, action: int, opponent_action: int, payoff: float) -> float:
         # update policy using REINFORCE
         self.optimizer.zero_grad()
         
@@ -125,9 +135,26 @@ class PolicyGradient:
         # entropy regularization (encourage exploration)
         entropy = -(probs * log_probs).sum()
         entropy_loss = -self.entropy_coef * entropy
+
+        # regret-matching target (RM+)
+        rm_loss = torch.tensor(0.0)
+        if self.regret_matching_coef > 0.0:
+            utilities = self.game.counterfactual_utilities(opponent_action, role=self.role)
+            self.regret_sums += utilities - float(payoff)
+            if self.regret_matching_plus:
+                pos = np.maximum(self.regret_sums, 0.0)
+            else:
+                pos = self.regret_sums
+            denom = float(np.sum(pos))
+            if denom <= 1e-12:
+                q = np.ones(self.n_actions, dtype=float) / float(self.n_actions)
+            else:
+                q = pos / denom
+            q_t = torch.tensor(q, dtype=log_probs.dtype)
+            rm_loss = -float(self.regret_matching_coef) * torch.sum(q_t * log_probs)
         
         # total loss
-        loss = pg_loss + entropy_loss
+        loss = pg_loss + rm_loss + entropy_loss
         
         # backprop and update
         loss.backward()
@@ -159,11 +186,39 @@ class PolicyGradient:
         # reset tracking
         self.baseline = 0.0
         self._steps = 0
+        self.regret_sums = np.zeros(self.n_actions, dtype=float)
         self.actions_history = []
         self.opponent_actions_history = []
         self.payoffs_history = []
         self.policies_history = []
         self.losses_history = []
+
+
+class PolicyGradientNoRegret(PolicyGradient):
+    def __init__(
+        self,
+        game: RepeatedGame,
+        hidden_size: int = 64,
+        lr: float = 1e-3,
+        entropy_coef: float = 0.0,
+        regret_matching_coef: float = 1.0,
+        regret_matching_plus: bool = True,
+        use_baseline: bool = True,
+        baseline_momentum: float = 0.9,
+        role: PlayerRole = "row",
+    ):
+        super().__init__(
+            game=game,
+            hidden_size=hidden_size,
+            lr=lr,
+            entropy_coef=entropy_coef,
+            regret_matching_coef=regret_matching_coef,
+            regret_matching_plus=regret_matching_plus,
+            name="pg_no_regret",
+            use_baseline=use_baseline,
+            baseline_momentum=baseline_momentum,
+            role=role,
+        )
 
 
 def run_policy_gradient(pg: PolicyGradient,
@@ -178,6 +233,19 @@ def run_policy_gradient(pg: PolicyGradient,
     exploitabilities = []
     losses = []
     entropies = []
+
+    # Track both players' regret per-iteration (row/col), independent of algorithm_role.
+    row_cum_regrets = []
+    col_cum_regrets = []
+    row_avg_regrets = []
+    col_avg_regrets = []
+
+    A = np.asarray(pg.game.payoff_matrix, dtype=float)
+    n_actions = int(pg.game.n_actions)
+    row_realized = 0.0
+    col_realized = 0.0
+    row_counterfactual_sums = np.zeros(n_actions, dtype=float)
+    col_counterfactual_sums = np.zeros(n_actions, dtype=float)
     
     if algorithm_role not in ("row", "col"):
         raise ValueError(f"algorithm_role must be 'row' or 'col', got {algorithm_role!r}")
@@ -211,6 +279,21 @@ def run_policy_gradient(pg: PolicyGradient,
         exploit = pg.game.compute_exploitability(policy, role=algorithm_role)
         
         entropy = -np.sum(policy * np.log(policy + 1e-10))
+
+        # regret for both players (row + col)
+        row_realized += float(A[row_action, col_action])
+        row_counterfactual_sums += A[:, col_action]
+        row_cum = float(row_counterfactual_sums.max() - row_realized)
+
+        col_realized += float(-A[row_action, col_action])
+        col_counterfactual_sums += -A[row_action, :]
+        col_cum = float(col_counterfactual_sums.max() - col_realized)
+
+        step = t + 1
+        row_cum_regrets.append(row_cum)
+        col_cum_regrets.append(col_cum)
+        row_avg_regrets.append(row_cum / step)
+        col_avg_regrets.append(col_cum / step)
         
         regrets.append(cum_regret)
         avg_regrets.append(avg_regret)
@@ -229,11 +312,15 @@ def run_policy_gradient(pg: PolicyGradient,
                   f"Policy = {policy}")
     
     return {
-        'algorithm': f'PolicyGradient(entropy={pg.entropy_coef})',
+        'algorithm': getattr(pg, 'name', f'PolicyGradient(entropy={pg.entropy_coef})'),
         'opponent': opponent.name,
         'n_rounds': n_rounds,
         'cumulative_regrets': np.array(regrets),
         'average_regrets': np.array(avg_regrets),
+        'row_cumulative_regrets': np.array(row_cum_regrets),
+        'col_cumulative_regrets': np.array(col_cum_regrets),
+        'row_average_regrets': np.array(row_avg_regrets),
+        'col_average_regrets': np.array(col_avg_regrets),
         'policies': np.array(policies),
         'exploitabilities': np.array(exploitabilities),
         'losses': np.array(losses),
