@@ -52,20 +52,23 @@ class MultiplicativeWeightsOpponent(Opponent):
     def __init__(self, game: RepeatedGame, eta: float = 0.1, role: PlayerRole = "col"):
         super().__init__(game, f"MW(eta={eta})", role=role)
         self.eta = eta
-        self.weights = np.ones(self.n_actions)
+        # log-weights for numerical stability
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         
     def select_action(self) -> int:
-        probs = self.weights / np.sum(self.weights)
+        z = self.log_weights - float(np.max(self.log_weights))
+        w = np.exp(z)
+        s = float(np.sum(w))
+        probs = (w / s) if (np.isfinite(s) and s > 0) else (np.ones(self.n_actions) / self.n_actions)
         return np.random.choice(self.n_actions, p=probs)
     
     def observe(self, own_action: int, opponent_action: int, payoff: float):
         # full-information update based on opponent action and role
         utilities = self.game.counterfactual_utilities(opponent_action, role=self.role)
-        for a in range(self.n_actions):
-            self.weights[a] *= np.exp(self.eta * float(utilities[a]))
+        self.log_weights += self.eta * np.asarray(utilities, dtype=float)
     
     def reset(self):
-        self.weights = np.ones(self.n_actions)
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
 
 
 class EXP3Opponent(Opponent):
@@ -73,14 +76,21 @@ class EXP3Opponent(Opponent):
         super().__init__(game, f"EXP3(eta={eta}, gamma={gamma})", role=role)
         self.eta = eta
         self.gamma = gamma
-        self.weights = np.ones(self.n_actions)
+        # log-weights for numerical stability
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         self.last_action = None
         self.last_probs = None
         
     def select_action(self) -> int:
-        w_sum = np.sum(self.weights)
-        probs = (1 - self.gamma) * (self.weights / w_sum) + \
-                (self.gamma / self.n_actions)
+        z = self.log_weights - float(np.max(self.log_weights))
+        w = np.exp(z)
+        w_sum = float(np.sum(w))
+        base = (w / w_sum) if (np.isfinite(w_sum) and w_sum > 0) else (np.ones(self.n_actions) / self.n_actions)
+        probs = (1 - self.gamma) * base + (self.gamma / self.n_actions)
+        # normalize for safety
+        probs = np.asarray(probs, dtype=float)
+        s = float(np.sum(probs))
+        probs = (probs / s) if (np.isfinite(s) and s > 0) else (np.ones(self.n_actions) / self.n_actions)
         
         self.last_probs = probs
         self.last_action = np.random.choice(self.n_actions, p=probs)
@@ -94,11 +104,10 @@ class EXP3Opponent(Opponent):
         p = float(self.last_probs[self.last_action])
         payoff_hat = payoff / max(p, 1e-12)
 
-        # exp(eta * payoff_hat)
-        self.weights[self.last_action] *= np.exp(self.eta * payoff_hat)
+        self.log_weights[self.last_action] += self.eta * float(payoff_hat)
     
     def reset(self):
-        self.weights = np.ones(self.n_actions)
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         self.last_action = None
         self.last_probs = None
 

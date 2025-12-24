@@ -65,8 +65,9 @@ class MultiplicativeWeights(NoRegretAlgorithm):
             self.eta = np.sqrt(np.log(self.n_actions) / T_approx)
         else:
             self.eta = eta
-        
-        self.weights = np.ones(self.n_actions)
+
+        # Use log-weights + softmax for numerical stability over long horizons.
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         
     def select_action(self) -> int:
         policy = self.get_policy()
@@ -74,15 +75,20 @@ class MultiplicativeWeights(NoRegretAlgorithm):
     
     def _update(self, own_action: int, opponent_action: int, payoff: float):
         utilities = self.game.counterfactual_utilities(opponent_action, role=self.role)
-        for a in range(self.n_actions):
-            self.weights[a] *= np.exp(self.eta * float(utilities[a]))
+        self.log_weights += self.eta * np.asarray(utilities, dtype=float)
     
     def get_policy(self) -> np.ndarray:
-        return self.weights / np.sum(self.weights)
+        z = self.log_weights - float(np.max(self.log_weights))
+        w = np.exp(z)
+        s = float(w.sum())
+        if not np.isfinite(s) or s <= 0:
+            # fall back to uniform; should be extremely rare with log-weights
+            return np.ones(self.n_actions, dtype=float) / float(self.n_actions)
+        return w / s
     
     def reset(self):
         super().reset()
-        self.weights = np.ones(self.n_actions)
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
 
 
 class EXP3(NoRegretAlgorithm):
@@ -106,7 +112,8 @@ class EXP3(NoRegretAlgorithm):
             self.eta = eta
             self.gamma = gamma
         
-        self.weights = np.ones(self.n_actions)
+        # Use log-weights + softmax for numerical stability over long horizons.
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         self.last_action = None
         self.last_policy = None
         
@@ -125,20 +132,29 @@ class EXP3(NoRegretAlgorithm):
         p = float(self.last_policy[self.last_action])
         payoff_hat = payoff / max(p, 1e-12)
 
-        # exp(eta * payoff_hat)
-        self.weights[self.last_action] *= np.exp(self.eta * payoff_hat)
+        self.log_weights[self.last_action] += self.eta * float(payoff_hat)
     
     def get_policy(self) -> np.ndarray:
-        w_sum = np.sum(self.weights)
-        base_policy = self.weights / w_sum
+        z = self.log_weights - float(np.max(self.log_weights))
+        w = np.exp(z)
+        w_sum = float(np.sum(w))
+        if not np.isfinite(w_sum) or w_sum <= 0:
+            base_policy = np.ones(self.n_actions, dtype=float) / float(self.n_actions)
+        else:
+            base_policy = w / w_sum
         
         # add exploration
         policy = (1 - self.gamma) * base_policy + (self.gamma / self.n_actions)
-        return policy
+        # normalize for safety
+        policy = np.asarray(policy, dtype=float)
+        s = float(policy.sum())
+        if not np.isfinite(s) or s <= 0:
+            return np.ones(self.n_actions, dtype=float) / float(self.n_actions)
+        return policy / s
     
     def reset(self):
         super().reset()
-        self.weights = np.ones(self.n_actions)
+        self.log_weights = np.zeros(self.n_actions, dtype=float)
         self.last_action = None
         self.last_policy = None
 
