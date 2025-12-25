@@ -220,7 +220,7 @@ def run_matchup(game: RepeatedGame,
     
     if isinstance(algo, (MultiplicativeWeights, EXP3)):
         results = run_algorithm(algo, opponent, n_rounds, verbose=verbose, algorithm_role=algo_role)
-    elif isinstance(algo, PolicyGradient):
+    elif isinstance(algo, (PolicyGradient, PolicyGradientNoRegret)):
         results = run_policy_gradient(algo, opponent, n_rounds, verbose=verbose, algorithm_role=algo_role)
     else:
         raise ValueError(f"Unknown algorithm type: {type(algo)}")
