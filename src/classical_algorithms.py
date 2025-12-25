@@ -169,6 +169,19 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
     policies = []
     exploitabilities = []
 
+    # Track both players' regret per-iteration (row/col), independent of algorithm_role.
+    row_cum_regrets = []
+    col_cum_regrets = []
+    row_avg_regrets = []
+    col_avg_regrets = []
+
+    A = np.asarray(algorithm.game.payoff_matrix, dtype=float)
+    n_actions = int(algorithm.game.n_actions)
+    row_realized = 0.0
+    col_realized = 0.0
+    row_counterfactual_sums = np.zeros(n_actions, dtype=float)
+    col_counterfactual_sums = np.zeros(n_actions, dtype=float)
+
     if algorithm_role not in ("row", "col"):
         raise ValueError(f"algorithm_role must be 'row' or 'col', got {algorithm_role!r}")
     opponent_role: PlayerRole = "col" if algorithm_role == "row" else "row"
@@ -201,6 +214,21 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         avg_regret = algorithm.get_average_regret()
         policy = algorithm.get_policy()
         exploit = algorithm.game.compute_exploitability(policy, role=algorithm_role)
+
+        # regret for both players (row + col)
+        row_realized += float(A[row_action, col_action])
+        row_counterfactual_sums += A[:, col_action]
+        row_cum = float(row_counterfactual_sums.max() - row_realized)
+
+        col_realized += float(-A[row_action, col_action])
+        col_counterfactual_sums += -A[row_action, :]
+        col_cum = float(col_counterfactual_sums.max() - col_realized)
+
+        step = t + 1
+        row_cum_regrets.append(row_cum)
+        col_cum_regrets.append(col_cum)
+        row_avg_regrets.append(row_cum / step)
+        col_avg_regrets.append(col_cum / step)
         
         regrets.append(cum_regret)
         avg_regrets.append(avg_regret)
@@ -222,6 +250,10 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         'n_rounds': n_rounds,
         'cumulative_regrets': np.array(regrets),
         'average_regrets': np.array(avg_regrets),
+        'row_cumulative_regrets': np.array(row_cum_regrets),
+        'col_cumulative_regrets': np.array(col_cum_regrets),
+        'row_average_regrets': np.array(row_avg_regrets),
+        'col_average_regrets': np.array(col_avg_regrets),
         'policies': np.array(policies),
         'exploitabilities': np.array(exploitabilities),
         'actions': np.array(algorithm.actions_history),
