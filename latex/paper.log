@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 JAN 2026 01:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 JAN 2026 15:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -298,7 +298,7 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/forloop/forloop.sty
 Package: forloop 2023/05/03 v3.0 For Loops for LaTeX
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 153.
+Package hyperref Info: Option `colorlinks' set `true' on input line 150.
 \titrun=\box55
 \c@@affiliationcounter=\count300
 \c@@affilnum=\count301
@@ -610,14 +610,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
 
 
-<figures/curve__MP__MW__ER__baseline_comparison.png, id=121, 744.381pt x 332.08064pt>
+<figures/curve__MP__MW__ER__baseline_comparison.png, id=119, 744.381pt x 332.08064pt>
 File: figures/curve__MP__MW__ER__baseline_comparison.png Graphic file (type png)
 <use figures/curve__MP__MW__ER__baseline_comparison.png>
-Package pdftex.def Info: figures/curve__MP__MW__ER__baseline_comparison.png  used on input line 412.
+Package pdftex.def Info: figures/curve__MP__MW__ER__baseline_comparison.png  used on input line 413.
 (pdftex.def)             Requested size: 234.15271pt x 104.459pt.
 
 
 [6]
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -625,21 +628,24 @@ Package pdftex.def Info: figures/curve__MP__MW__ER__baseline_comparison.png  use
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.496 
+l.497 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.496 
+l.497 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.496 
+l.497 
        <./figures/curve__MP__MW__ER__baseline_comparison.png>]
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+Underfull \vbox (badness 3250) has occurred while \output is active []
 
 
 
@@ -647,31 +653,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.589 
-      
+l.591 \end{table}
+                 
 pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.589 
-      
+l.591 \end{table}
+                 ]
+
+
+
+[9
 pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.589 
+l.674 
       ]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-
-
-
-[9]
 
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 726--727
+Underfull \hbox (badness 10000) in paragraph at lines 741--742
  \T1/ptm/b/n/10 (+20) Pol-icy gra-di-ent meth-ods. \T1/ptm/m/n/10 (+20) Pol-icy gra-di-ent al-go-
  []
 
@@ -679,11 +681,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 726--727
 
 
 
-[11] (./paper.bbl
+[11]
 
-)
+(./paper.bbl
 
-[12] (./paper.aux)
+[12])
+
+
+
+[13
+
+] (./paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -692,18 +700,18 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16660 strings out of 473190
- 270734 string characters out of 5715801
- 741283 words of memory out of 5000000
- 39249 multiletter control sequences out of 15000+600000
- 616993 words of font info for 297 fonts, out of 8000000 for 9000
+ 16667 strings out of 473190
+ 270811 string characters out of 5715801
+ 741170 words of memory out of 5000000
+ 39246 multiletter control sequences out of 15000+600000
+ 620820 words of font info for 298 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,79p,1255b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (12 pages, 384045 bytes).
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (13 pages, 378912 bytes).
 PDF statistics:
- 339 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 95 named destinations out of 1000 (max. 500000)
- 58374 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 288 compressed objects within 3 object streams
+ 98 named destinations out of 1000 (max. 500000)
+ 59910 words of extra memory for PDF output out of 61914 (max. 10000000)
 
