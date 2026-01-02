@@ -66,7 +66,7 @@ class MultiplicativeWeights(NoRegretAlgorithm):
         else:
             self.eta = eta
 
-        # Use log-weights + softmax for numerical stability over long horizons.
+        # log-weights + softmax for numerical stability
         self.log_weights = np.zeros(self.n_actions, dtype=float)
         
     def select_action(self) -> int:
@@ -166,8 +166,12 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
                   algorithm_role: PlayerRole = "row") -> Dict:
     regrets = []
     avg_regrets = []
+    instant_regrets_cumulative = []
+    instant_regrets_average = []
     policies = []
     exploitabilities = []
+    time_avg_exploitabilities = []
+    avg_policy: np.ndarray | None = None
 
     # Track both players' regret per-iteration (row/col), independent of algorithm_role.
     row_cum_regrets = []
@@ -181,6 +185,7 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
     col_realized = 0.0
     row_counterfactual_sums = np.zeros(n_actions, dtype=float)
     col_counterfactual_sums = np.zeros(n_actions, dtype=float)
+    instant_cum = 0.0
 
     if algorithm_role not in ("row", "col"):
         raise ValueError(f"algorithm_role must be 'row' or 'col', got {algorithm_role!r}")
@@ -215,6 +220,19 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         policy = algorithm.get_policy()
         exploit = algorithm.game.compute_exploitability(policy, role=algorithm_role)
 
+        # instant regret (best response each round)
+        if algorithm_role == "row":
+            own_action, opp_action = row_action, col_action
+        else:
+            own_action, opp_action = col_action, row_action
+        utilities = algorithm.game.counterfactual_utilities(opp_action, role=algorithm_role)
+        realized = algorithm.game.get_utility(own_action, opp_action, role=algorithm_role)
+        inst_t = float(np.max(utilities) - float(realized))
+        instant_cum += inst_t
+        step = t + 1
+        instant_regrets_cumulative.append(instant_cum)
+        instant_regrets_average.append(instant_cum / step)
+
         # regret for both players (row + col)
         row_realized += float(A[row_action, col_action])
         row_counterfactual_sums += A[:, col_action]
@@ -224,7 +242,6 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         col_counterfactual_sums += -A[row_action, :]
         col_cum = float(col_counterfactual_sums.max() - col_realized)
 
-        step = t + 1
         row_cum_regrets.append(row_cum)
         col_cum_regrets.append(col_cum)
         row_avg_regrets.append(row_cum / step)
@@ -234,6 +251,14 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         avg_regrets.append(avg_regret)
         policies.append(policy.copy())
         exploitabilities.append(exploit)
+
+        # time-averaged exploitability (avg of policies so far)
+        if avg_policy is None:
+            avg_policy = policy.copy()
+        else:
+            avg_policy = ((step - 1) * avg_policy + policy) / step
+        time_avg_exploit = algorithm.game.compute_exploitability(avg_policy, role=algorithm_role)
+        time_avg_exploitabilities.append(time_avg_exploit)
         
         # log every 10% of rounds
         log_every = max(1, n_rounds // 10)
@@ -250,12 +275,15 @@ def run_algorithm(algorithm: NoRegretAlgorithm,
         'n_rounds': n_rounds,
         'cumulative_regrets': np.array(regrets),
         'average_regrets': np.array(avg_regrets),
+        'instant_regrets_cumulative': np.array(instant_regrets_cumulative),
+        'instant_regrets_average': np.array(instant_regrets_average),
         'row_cumulative_regrets': np.array(row_cum_regrets),
         'col_cumulative_regrets': np.array(col_cum_regrets),
         'row_average_regrets': np.array(row_avg_regrets),
         'col_average_regrets': np.array(col_avg_regrets),
         'policies': np.array(policies),
         'exploitabilities': np.array(exploitabilities),
+        'time_avg_exploitabilities': np.array(time_avg_exploitabilities),
         'actions': np.array(algorithm.actions_history),
         'opponent_actions': np.array(algorithm.opponent_actions_history),
         'payoffs': np.array(algorithm.payoffs_history),

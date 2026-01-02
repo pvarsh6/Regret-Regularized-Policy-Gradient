@@ -1,0 +1,99 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Arora et~al.(2012)Arora, Hazan, and Kale]{arora2012multiplicative}
+Arora, S., Hazan, E., and Kale, S.
+\newblock The multiplicative weights update method: a meta-algorithm and applications.
+\newblock \emph{Theory of Computing}, 8\penalty0 (1):\penalty0 121--164, 2012.
+
+\bibitem[Auer et~al.(2002)Auer, Cesa-Bianchi, Freund, and Schapire]{auer2002nonstochastic}
+Auer, P., Cesa-Bianchi, N., Freund, Y., and Schapire, R.~E.
+\newblock The nonstochastic multiarmed bandit problem.
+\newblock \emph{SIAM Journal on Computing}, 32\penalty0 (1):\penalty0 48--77, 2002.
+
+\bibitem[Berner et~al.(2019)Berner, Brockman, Chan, Cheung, D\k{e}biak, Dennison, Farhi, Fischer, Hashme, Hesse, et~al.]{berner2019dota}
+Berner, C., Brockman, G., Chan, B., Cheung, V., D\k{e}biak, P., Dennison, C., Farhi, D., Fischer, Q., Hashme, S., Hesse, C., et~al.
+\newblock Dota 2 with large scale deep reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:1912.06680}, 2019.
+
+\bibitem[Bowling et~al.(2015)Bowling, Burch, Johanson, and Tammelin]{bowling2015heads}
+Bowling, M., Burch, N., Johanson, M., and Tammelin, O.
+\newblock Heads-up limit hold'em poker is solved.
+\newblock \emph{Science}, 347\penalty0 (6218):\penalty0 145--149, 2015.
+
+\bibitem[Brown \& Sandholm(2019)Brown and Sandholm]{brown2019superhuman}
+Brown, N. and Sandholm, T.
+\newblock Superhuman {AI} for multiplayer poker.
+\newblock \emph{Science}, 365\penalty0 (6456):\penalty0 885--890, 2019.
+
+\bibitem[Bubeck(2015)]{bubeck2015convex}
+Bubeck, S.
+\newblock \emph{Convex Optimization: Algorithms and Complexity}.
+\newblock Foundations and Trends{\textregistered} in Machine Learning, 2015.
+\newblock Available at arXiv:1405.4980.
+
+\bibitem[Freund \& Schapire(1999)Freund and Schapire]{freund1999adaptive}
+Freund, Y. and Schapire, R.~E.
+\newblock Adaptive game playing using multiplicative weights.
+\newblock \emph{Games and Economic Behavior}, 29\penalty0 (1-2):\penalty0 79--103, 1999.
+
+\bibitem[Gleave et~al.(2020)Gleave, Dennis, Wild, Kant, Levine, and Russell]{gleave2020adversarial}
+Gleave, A., Dennis, M., Wild, C., Kant, N., Levine, S., and Russell, S.
+\newblock Adversarial policies: Attacking deep reinforcement learning.
+\newblock In \emph{International Conference on Learning Representations}, 2020.
+
+\bibitem[Haarnoja et~al.(2018)Haarnoja, Zhou, Abbeel, and Levine]{haarnoja2018soft}
+Haarnoja, T., Zhou, A., Abbeel, P., and Levine, S.
+\newblock Soft actor-critic: Off-policy maximum entropy deep reinforcement learning with a stochastic actor.
+\newblock In \emph{International Conference on Machine Learning}, pp.\  1861--1870. PMLR, 2018.
+
+\bibitem[Hart \& Mas-Colell(2000)Hart and Mas-Colell]{hart2000simple}
+Hart, S. and Mas-Colell, A.
+\newblock A simple adaptive procedure leading to correlated equilibrium.
+\newblock \emph{Econometrica}, 68\penalty0 (5):\penalty0 1127--1150, 2000.
+
+\bibitem[Heinrich \& Silver(2016)Heinrich and Silver]{heinrich2015fictitious}
+Heinrich, J. and Silver, D.
+\newblock Fictitious self-play in extensive-form games.
+\newblock In \emph{International Conference on Machine Learning}, 2016.
+
+\bibitem[Kingma \& Ba(2014)Kingma and Ba]{kingma2014adam}
+Kingma, D.~P. and Ba, J.
+\newblock Adam: A method for stochastic optimization.
+\newblock \emph{arXiv preprint arXiv:1412.6980}, 2014.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and Klimov]{schulman2017proximal}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O.
+\newblock Proximal policy optimization algorithms.
+\newblock \emph{arXiv preprint arXiv:1707.06347}, 2017.
+
+\bibitem[Silver et~al.(2016)Silver, Huang, Maddison, Guez, Sifre, Van Den~Driessche, Schrittwieser, Antonoglou, Panneershelvam, Lanctot, et~al.]{silver2016mastering}
+Silver, D., Huang, A., Maddison, C.~J., Guez, A., Sifre, L., Van Den~Driessche, G., Schrittwieser, J., Antonoglou, I., Panneershelvam, V., Lanctot, M., et~al.
+\newblock Mastering the game of {G}o with deep neural networks and tree search.
+\newblock \emph{Nature}, 529\penalty0 (7587):\penalty0 484--489, 2016.
+
+\bibitem[Steinberger(2019)]{steinberger2019single}
+Steinberger, E.
+\newblock Single deep counterfactual regret minimization.
+\newblock \emph{arXiv preprint arXiv:1901.07621}, 2019.
+
+\bibitem[Sutton et~al.(1999)Sutton, McAllester, Singh, and Mansour]{sutton1999policy}
+Sutton, R.~S., McAllester, D., Singh, S., and Mansour, Y.
+\newblock Policy gradient methods for reinforcement learning with function approximation.
+\newblock \emph{Advances in Neural Information Processing Systems}, 12, 1999.
+
+\bibitem[Williams(1992)]{williams1992simple}
+Williams, R.~J.
+\newblock Simple statistical gradient-following algorithms for connectionist reinforcement learning.
+\newblock In \emph{Machine Learning}, volume~8, pp.\  229--256. Springer, 1992.
+
+\bibitem[Zinkevich et~al.(2007)Zinkevich, Johanson, Bowling, and Piccione]{zinkevich2007regret}
+Zinkevich, M., Johanson, M., Bowling, M., and Piccione, C.
+\newblock Regret minimization in games with incomplete information.
+\newblock \emph{Advances in Neural Information Processing Systems}, 20, 2007.
+
+\end{thebibliography}
