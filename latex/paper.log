@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 JAN 2026 15:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 JAN 2026 19:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -114,6 +114,13 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks20
 \inpenc@posthook=\toks21
+) (/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count281
+\float@exts=\toks22
+\float@box=\box53
+\@float@everytoks=\toks23
+\@floatcapt=\box54
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
  (/usr/local/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty
@@ -145,13 +152,13 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (/usr/local/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count281
+\c@section@level=\count282
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen160
-\Hy@linkcounter=\count282
-\Hy@pagecounter=\count283
+\Hy@linkcounter=\count283
+\Hy@pagecounter=\count284
  (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -159,7 +166,7 @@ Now handling font encoding PD1 ...
 ) (/usr/local/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count284
+\Hy@SavedSpaceFactor=\count285
  (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -172,7 +179,7 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count285
+\c@Hy@tempcnt=\count286
  (/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -184,7 +191,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/local/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count286
+\Fld@menulength=\count287
 \Field@Width=\dimen162
 \Fld@charsize=\dimen163
 Package hyperref Info: Hyper figures OFF on input line 6042.
@@ -198,9 +205,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count287
-\c@Item=\count288
-\c@Hfootnote=\count289
+\Hy@abspage=\count288
+\c@Item=\count289
+\c@Hfootnote=\count290
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -209,8 +216,8 @@ File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count290
-\c@bookmark@seq@number=\count291
+\Fld@listcount=\count291
+\c@bookmark@seq@number=\count292
  (/usr/local/texlive/2025/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (/usr/local/texlive/2025/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -253,14 +260,7 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 Package: algorithm 
 
 Document Style `algorithm' - floating environment
-(/usr/local/texlive/2025/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count292
-\float@exts=\toks22
-\float@box=\box53
-\@float@everytoks=\toks23
-\@floatcapt=\box54
-) (/usr/local/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/local/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 \@float@every@algorithm=\toks24
@@ -433,7 +433,7 @@ Package cleveref Info: always capitalise cross-reference names on input line 785
 Package cleveref Info: no abbreviation of names on input line 7852.
 )
 \c@theorem=\count320
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 53.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 60.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -443,38 +443,38 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Info: Redefining \microtypecontext on input line 53.
-Package microtype Info: Applying patch `item' on input line 53.
-Package microtype Info: Applying patch `toc' on input line 53.
-Package microtype Info: Applying patch `eqnum' on input line 53.
-Package microtype Info: Applying patch `footnote' on input line 53.
-Package microtype Info: Applying patch `verbatim' on input line 53.
-LaTeX Info: Redefining \microtypesetup on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Info: Redefining \microtypecontext on input line 60.
+Package microtype Info: Applying patch `item' on input line 60.
+Package microtype Info: Applying patch `toc' on input line 60.
+Package microtype Info: Applying patch `eqnum' on input line 60.
+Package microtype Info: Applying patch `footnote' on input line 60.
+Package microtype Info: Applying patch `verbatim' on input line 60.
+LaTeX Info: Redefining \microtypesetup on input line 60.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 53.
+LaTeX Info: Redefining \showhyphens on input line 60.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -505,7 +505,7 @@ Package grfext Info: Graphics extension search list:
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 53.
+Package hyperref Info: Link coloring ON on input line 60.
  (./paper.out) (./paper.out)
 \@outlinefile=\write3
 \openout3 = `paper.out'.
@@ -514,20 +514,20 @@ Package hyperref Info: Link coloring ON on input line 53.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Ignoring empty anchor on input line 72.
+Package hyperref Warning: Ignoring empty anchor on input line 79.
 
 
 
@@ -541,11 +541,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 95.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 102.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-Underfull \hbox (badness 2150) in paragraph at lines 97--98
+Underfull \hbox (badness 2150) in paragraph at lines 104--105
 \T1/ptm/m/n/10 (+20) sum games (Match-ing Pen-nies and Rock-Paper-
  []
 
@@ -558,17 +558,17 @@ Underfull \hbox (badness 2150) in paragraph at lines 97--98
 
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
 []\T1/ptm/b/n/10 (+20) Regret-matching reg-u-lar-izer\T1/ptm/m/n/10 (+20) :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 []\T1/ptm/b/n/10 (+20) Entropy reg-u-lar-iza-tion\T1/ptm/m/n/10 (+20) : $\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 ^^U[]H\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^Y[]\OT1/cmr/m/n/10 ) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 \OML/cmm/m/it/10 ^^U[] [][] ^^Y[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 ^^Y[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 a\OT1/cmr/m/n/10 )$ \T1/ptm/m/n/10 (+20) en-cour-ages ex-plo-ration
  []
 
@@ -580,12 +580,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [4]
-Underfull \hbox (badness 3792) in paragraph at lines 284--285
+Underfull \hbox (badness 3792) in paragraph at lines 291--292
 []\T1/ptm/m/n/10 (+20) The key hy-per-pa-ram-e-ter is the regret-matching co-
  []
 
 
-Underfull \hbox (badness 3514) in paragraph at lines 284--285
+Underfull \hbox (badness 3514) in paragraph at lines 291--292
 \T1/ptm/m/n/10 (+20) ef-fi-cient $\OML/cmm/m/it/10 ^^U[]$\T1/ptm/m/n/10 (+20) . We con-duct a sweep over $\OML/cmm/m/it/10 ^^U[] \OMS/cmsy/m/n/10 2
  []
 
@@ -594,86 +594,45 @@ Underfull \hbox (badness 3514) in paragraph at lines 284--285
 
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 []\T1/ptm/b/n/10 (+20) PG-RM+ $\OML/cmm/m/it/10 ^^U[]$\T1/ptm/b/n/10 (+20) : \T1/ptm/m/n/10 (+20) Our pro-posed RRPG
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 \T1/ptm/m/n/10 (+20) with regret-matching co-ef-fi-cient $\OML/cmm/m/it/10 ^^U[] \OMS/cmsy/m/n/10 2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 380--381
 \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 05\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OMS/cmsy/m/n/10 g$ \T1/ptm/m/n/10 (+20) and en-tropy co-ef-fi-
  []
 
 
 
-<figures/curve__MP__MW__ER__baseline_comparison.png, id=119, 744.381pt x 332.08064pt>
-File: figures/curve__MP__MW__ER__baseline_comparison.png Graphic file (type png)
-<use figures/curve__MP__MW__ER__baseline_comparison.png>
-Package pdftex.def Info: figures/curve__MP__MW__ER__baseline_comparison.png  used on input line 413.
-(pdftex.def)             Requested size: 234.15271pt x 104.459pt.
 
 
 [6]
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[7]
+
+
+Underfull \vbox (badness 1292) has occurred while \output is active []
 
 
 
-[7
-pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.497 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.497 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.497 
-       <./figures/curve__MP__MW__ER__baseline_comparison.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[8]
 
 
 
-
-Underfull \vbox (badness 3250) has occurred while \output is active []
-
-
-
-[8
-pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.591 \end{table}
-                 
-pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.591 \end{table}
-                 ]
-
-
-
-[9
-pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.674 
-      ]
+[9]
 
 
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 759--760
  \T1/ptm/b/n/10 (+20) Pol-icy gra-di-ent meth-ods. \T1/ptm/m/n/10 (+20) Pol-icy gra-di-ent al-go-
  []
 
@@ -691,7 +650,301 @@ Underfull \hbox (badness 10000) in paragraph at lines 741--742
 
 [13
 
-] (./paper.aux)
+]
+<figures/adaptive/bar__MP__ER+.png, id=267, 715.473pt x 336.7782pt>
+File: figures/adaptive/bar__MP__ER+.png Graphic file (type png)
+<use figures/adaptive/bar__MP__ER+.png>
+Package pdftex.def Info: figures/adaptive/bar__MP__ER+.png  used on input line 835.
+(pdftex.def)             Requested size: 390.25948pt x 183.6972pt.
+<figures/adaptive/bar__MP__EXP.png, id=269, 715.473pt x 323.40825pt>
+File: figures/adaptive/bar__MP__EXP.png Graphic file (type png)
+<use figures/adaptive/bar__MP__EXP.png>
+Package pdftex.def Info: figures/adaptive/bar__MP__EXP.png  used on input line 836.
+(pdftex.def)             Requested size: 390.25948pt x 176.4045pt.
+<figures/adaptive/bar__MP__IR.png, id=270, 715.473pt x 323.40825pt>
+File: figures/adaptive/bar__MP__IR.png Graphic file (type png)
+<use figures/adaptive/bar__MP__IR.png>
+Package pdftex.def Info: figures/adaptive/bar__MP__IR.png  used on input line 837.
+(pdftex.def)             Requested size: 390.25948pt x 176.4045pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[14
+
+
+]
+Underfull \vbox (badness 2005) has occurred while \output is active []
+
+
+
+[15 <./figures/adaptive/bar__MP__ER+.png> <./figures/adaptive/bar__MP__EXP.png> <./figures/adaptive/bar__MP__IR.png>]
+<figures/adaptive/bar__RPS__ER+.png, id=284, 715.473pt x 336.7782pt>
+File: figures/adaptive/bar__RPS__ER+.png Graphic file (type png)
+<use figures/adaptive/bar__RPS__ER+.png>
+Package pdftex.def Info: figures/adaptive/bar__RPS__ER+.png  used on input line 851.
+(pdftex.def)             Requested size: 390.25948pt x 183.6972pt.
+<figures/adaptive/bar__RPS__EXP.png, id=285, 715.473pt x 323.7696pt>
+File: figures/adaptive/bar__RPS__EXP.png Graphic file (type png)
+<use figures/adaptive/bar__RPS__EXP.png>
+Package pdftex.def Info: figures/adaptive/bar__RPS__EXP.png  used on input line 852.
+(pdftex.def)             Requested size: 390.25948pt x 176.60161pt.
+<figures/adaptive/bar__RPS__IR.png, id=286, 715.473pt x 328.1058pt>
+File: figures/adaptive/bar__RPS__IR.png Graphic file (type png)
+<use figures/adaptive/bar__RPS__IR.png>
+Package pdftex.def Info: figures/adaptive/bar__RPS__IR.png  used on input line 853.
+(pdftex.def)             Requested size: 390.25948pt x 178.96681pt.
+
+
+[16
+
+ <./figures/adaptive/bar__RPS__ER+.png> <./figures/adaptive/bar__RPS__EXP.png> <./figures/adaptive/bar__RPS__IR.png>]
+<figures/static/bar__MP__ER+.png, id=295, 730.28835pt x 341.1144pt>
+File: figures/static/bar__MP__ER+.png Graphic file (type png)
+<use figures/static/bar__MP__ER+.png>
+Package pdftex.def Info: figures/static/bar__MP__ER+.png  used on input line 867.
+(pdftex.def)             Requested size: 390.25948pt x 182.28879pt.
+<figures/static/bar__MP__EXP.png, id=296, 715.473pt x 328.1058pt>
+File: figures/static/bar__MP__EXP.png Graphic file (type png)
+<use figures/static/bar__MP__EXP.png>
+Package pdftex.def Info: figures/static/bar__MP__EXP.png  used on input line 868.
+(pdftex.def)             Requested size: 390.25948pt x 178.96681pt.
+<figures/static/bar__MP__IR.png, id=297, 715.473pt x 341.1144pt>
+File: figures/static/bar__MP__IR.png Graphic file (type png)
+<use figures/static/bar__MP__IR.png>
+Package pdftex.def Info: figures/static/bar__MP__IR.png  used on input line 869.
+(pdftex.def)             Requested size: 390.25948pt x 186.0624pt.
+
+
+[17
+
+ <./figures/static/bar__MP__ER+.png> <./figures/static/bar__MP__EXP.png> <./figures/static/bar__MP__IR.png>]
+<figures/static/bar__RPS__ER+.png, id=307, 736.79265pt x 345.81195pt>
+File: figures/static/bar__RPS__ER+.png Graphic file (type png)
+<use figures/static/bar__RPS__ER+.png>
+Package pdftex.def Info: figures/static/bar__RPS__ER+.png  used on input line 883.
+(pdftex.def)             Requested size: 390.25948pt x 183.16866pt.
+<figures/static/bar__RPS__EXP.png, id=308, 715.473pt x 328.1058pt>
+File: figures/static/bar__RPS__EXP.png Graphic file (type png)
+<use figures/static/bar__RPS__EXP.png>
+Package pdftex.def Info: figures/static/bar__RPS__EXP.png  used on input line 884.
+(pdftex.def)             Requested size: 390.25948pt x 178.96681pt.
+<figures/static/bar__RPS__IR.png, id=309, 715.473pt x 345.81195pt>
+File: figures/static/bar__RPS__IR.png Graphic file (type png)
+<use figures/static/bar__RPS__IR.png>
+Package pdftex.def Info: figures/static/bar__RPS__IR.png  used on input line 885.
+(pdftex.def)             Requested size: 390.25948pt x 188.62471pt.
+
+
+[18
+
+ <./figures/static/bar__RPS__ER+.png> <./figures/static/bar__RPS__EXP.png> <./figures/static/bar__RPS__IR.png>]
+<figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png, id=319, 748.7172pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png  used on input line 903.
+(pdftex.def)             Requested size: 487.8225pt x 216.37177pt.
+<figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png, id=320, 748.7172pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png  used on input line 904.
+(pdftex.def)             Requested size: 487.8225pt x 216.37177pt.
+
+
+[19
+
+ <./figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png> <./figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png>]
+<figures/adaptive/curve__MP__MW__ER__functional_form.png, id=331, 767.5074pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__functional_form.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__functional_form.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__functional_form.png  used on input line 920.
+(pdftex.def)             Requested size: 487.8225pt x 211.06648pt.
+<figures/adaptive/curve__RPS__MW__ER__functional_form.png, id=332, 767.5074pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__functional_form.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__functional_form.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__functional_form.png  used on input line 921.
+(pdftex.def)             Requested size: 487.8225pt x 211.06648pt.
+
+
+[20
+
+ <./figures/adaptive/curve__MP__MW__ER__functional_form.png> <./figures/adaptive/curve__RPS__MW__ER__functional_form.png>]
+<figures/adaptive/curve__MP__EXP3__ER__functional_form.png, id=340, 767.5074pt x 332.08064pt>
+File: figures/adaptive/curve__MP__EXP3__ER__functional_form.png Graphic file (type png)
+<use figures/adaptive/curve__MP__EXP3__ER__functional_form.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__EXP3__ER__functional_form.png  used on input line 930.
+(pdftex.def)             Requested size: 487.8225pt x 211.06648pt.
+<figures/adaptive/curve__RPS__EXP3__ER__functional_form.png, id=341, 767.5074pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__EXP3__ER__functional_form.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__EXP3__ER__functional_form.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__EXP3__ER__functional_form.png  used on input line 931.
+(pdftex.def)             Requested size: 487.8225pt x 211.06648pt.
+
+
+[21
+
+ <./figures/adaptive/curve__MP__EXP3__ER__functional_form.png> <./figures/adaptive/curve__RPS__EXP3__ER__functional_form.png>]
+<figures/adaptive/curve__MP__MW__ER__discounting.png, id=349, 779.43195pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__discounting.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__discounting.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__discounting.png  used on input line 944.
+(pdftex.def)             Requested size: 487.8225pt x 207.84378pt.
+<figures/adaptive/curve__RPS__MW__ER__discounting.png, id=350, 779.43195pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__discounting.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__discounting.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__discounting.png  used on input line 945.
+(pdftex.def)             Requested size: 487.8225pt x 207.84378pt.
+
+
+[22
+
+ <./figures/adaptive/curve__MP__MW__ER__discounting.png> <./figures/adaptive/curve__RPS__MW__ER__discounting.png>]
+<figures/adaptive/curve__MP__MW__ER__schedules.png, id=358, 778.70924pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__schedules.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__schedules.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__schedules.png  used on input line 958.
+(pdftex.def)             Requested size: 487.8225pt x 208.03633pt.
+<figures/adaptive/curve__RPS__MW__ER__schedules.png, id=359, 778.70924pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__schedules.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__schedules.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__schedules.png  used on input line 959.
+(pdftex.def)             Requested size: 487.8225pt x 208.03633pt.
+
+
+[23
+
+ <./figures/adaptive/curve__MP__MW__ER__schedules.png> <./figures/adaptive/curve__RPS__MW__ER__schedules.png>]
+<figures/adaptive/curve__MP__MW__ER__ablation_components.png, id=367, 756.30556pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__ablation_components.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__ablation_components.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__ablation_components.png  used on input line 972.
+(pdftex.def)             Requested size: 487.8225pt x 214.19797pt.
+<figures/adaptive/curve__RPS__MW__ER__ablation_components.png, id=368, 756.30556pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__ablation_components.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__ablation_components.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__ablation_components.png  used on input line 973.
+(pdftex.def)             Requested size: 487.8225pt x 214.19797pt.
+
+
+[24
+
+ <./figures/adaptive/curve__MP__MW__ER__ablation_components.png> <./figures/adaptive/curve__RPS__MW__ER__ablation_components.png>]
+<figures/adaptive/curve__MP__EXP3__ER__ablation_components.png, id=376, 756.30556pt x 332.08064pt>
+File: figures/adaptive/curve__MP__EXP3__ER__ablation_components.png Graphic file (type png)
+<use figures/adaptive/curve__MP__EXP3__ER__ablation_components.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__EXP3__ER__ablation_components.png  used on input line 982.
+(pdftex.def)             Requested size: 487.8225pt x 214.19797pt.
+<figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png, id=377, 756.30556pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png  used on input line 983.
+(pdftex.def)             Requested size: 487.8225pt x 214.19797pt.
+
+
+[25
+
+ <./figures/adaptive/curve__MP__EXP3__ER__ablation_components.png> <./figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png>]
+<figures/adaptive/curve__MP__MW__ER__baseline_comparison.png, id=386, 744.381pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ER__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ER__baseline_comparison.png  used on input line 996.
+(pdftex.def)             Requested size: 487.8225pt x 217.62335pt.
+<figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png, id=387, 744.381pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png  used on input line 997.
+(pdftex.def)             Requested size: 487.8225pt x 217.62335pt.
+
+
+[26
+
+ <./figures/adaptive/curve__MP__MW__ER__baseline_comparison.png> <./figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png>]
+<figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png, id=394, 744.381pt x 332.08064pt>
+File: figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png  used on input line 1006.
+(pdftex.def)             Requested size: 487.8225pt x 217.62335pt.
+<figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png, id=395, 744.381pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png  used on input line 1007.
+(pdftex.def)             Requested size: 487.8225pt x 217.62335pt.
+
+
+[27
+
+ <./figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png> <./figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png>]
+<figures/static/curve__MP__Det__ER__baseline_comparison.png, id=402, 744.381pt x 332.08064pt>
+File: figures/static/curve__MP__Det__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__MP__Det__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__MP__Det__ER__baseline_comparison.png  used on input line 1020.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+<figures/static/curve__MP__Bias__ER__baseline_comparison.png, id=403, 744.381pt x 332.08064pt>
+File: figures/static/curve__MP__Bias__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__MP__Bias__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__MP__Bias__ER__baseline_comparison.png  used on input line 1021.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+<figures/static/curve__MP__Uni__ER__baseline_comparison.png, id=404, 744.381pt x 332.08064pt>
+File: figures/static/curve__MP__Uni__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__MP__Uni__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__MP__Uni__ER__baseline_comparison.png  used on input line 1022.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+
+
+[28
+
+ <./figures/static/curve__MP__Det__ER__baseline_comparison.png> <./figures/static/curve__MP__Bias__ER__baseline_comparison.png> <./figures/static/curve__MP__Uni__ER__baseline_comparison.png>]
+<figures/static/curve__RPS__Det__ER__baseline_comparison.png, id=413, 744.381pt x 332.08064pt>
+File: figures/static/curve__RPS__Det__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__RPS__Det__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__RPS__Det__ER__baseline_comparison.png  used on input line 1031.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+<figures/static/curve__RPS__Bias__ER__baseline_comparison.png, id=414, 744.381pt x 332.08064pt>
+File: figures/static/curve__RPS__Bias__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__RPS__Bias__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__RPS__Bias__ER__baseline_comparison.png  used on input line 1032.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+<figures/static/curve__RPS__Uni__ER__baseline_comparison.png, id=415, 744.381pt x 332.08064pt>
+File: figures/static/curve__RPS__Uni__ER__baseline_comparison.png Graphic file (type png)
+<use figures/static/curve__RPS__Uni__ER__baseline_comparison.png>
+Package pdftex.def Info: figures/static/curve__RPS__Uni__ER__baseline_comparison.png  used on input line 1033.
+(pdftex.def)             Requested size: 390.25948pt x 174.10173pt.
+
+
+[29
+
+ <./figures/static/curve__RPS__Det__ER__baseline_comparison.png> <./figures/static/curve__RPS__Bias__ER__baseline_comparison.png> <./figures/static/curve__RPS__Uni__ER__baseline_comparison.png>]
+<figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png, id=424, 753.0534pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png  used on input line 1050.
+(pdftex.def)             Requested size: 487.8225pt x 215.1202pt.
+<figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png, id=425, 746.5491pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png  used on input line 1051.
+(pdftex.def)             Requested size: 487.8225pt x 216.99503pt.
+
+
+[30
+
+ <./figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png> <./figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png>]
+<figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png, id=436, 737.154pt x 332.08064pt>
+File: figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png  used on input line 1064.
+(pdftex.def)             Requested size: 487.8225pt x 219.76675pt.
+<figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png, id=437, 737.154pt x 332.08064pt>
+File: figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png Graphic file (type png)
+<use figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png>
+Package pdftex.def Info: figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png  used on input line 1065.
+(pdftex.def)             Requested size: 487.8225pt x 219.76675pt.
+
+
+[31
+
+ <./figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png> <./figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png>] (./paper.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -700,18 +953,18 @@ Package rerunfilecheck Info: File `paper.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 16667 strings out of 473190
- 270811 string characters out of 5715801
- 741170 words of memory out of 5000000
- 39246 multiletter control sequences out of 15000+600000
- 620820 words of font info for 298 fonts, out of 8000000 for 9000
+ 17098 strings out of 473190
+ 289017 string characters out of 5715801
+ 741203 words of memory out of 5000000
+ 39589 multiletter control sequences out of 15000+600000
+ 622460 words of font info for 321 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,16n,79p,1255b,640s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (13 pages, 378912 bytes).
+Output written on paper.pdf (31 pages, 4519407 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 288 compressed objects within 3 object streams
- 98 named destinations out of 1000 (max. 500000)
- 59910 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 556 PDF objects out of 1000 (max. 8388607)
+ 402 compressed objects within 5 object streams
+ 149 named destinations out of 1000 (max. 500000)
+ 60105 words of extra memory for PDF output out of 61914 (max. 10000000)
 

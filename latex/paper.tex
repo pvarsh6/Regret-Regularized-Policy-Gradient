@@ -11,6 +11,7 @@
 \usepackage{booktabs} % for professional tables
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{float}
 
 \usepackage{hyperref}
 
@@ -32,6 +33,12 @@
 
 % if you use cleveref
 \usepackage[capitalize,noabbrev]{cleveref}
+
+% Appendix figure defaults
+
+\newcommand{\appfigwidth}{0.8\linewidth}
+\newcommand{\appfigvsep}{1.0em}
+\newcommand{\appcurvewidth}{1.0\linewidth}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THEOREMS
@@ -408,12 +415,7 @@ For steady-state analysis, we compute metrics over the final $K = 1{,}000$ round
 
 All experiments were conducted on standard CPUs. Total wall-clock time for the full benchmark (2 games $\times$ 5 opponents $\times$ 18 algorithms $\times$ 20 seeds = 3{,}600 runs) was approximately 11 hours distributed across two machines.
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.48\textwidth]{figures/curve__MP__MW__ER__baseline_comparison.png}
-    \caption{Average external regret over time for Matching Pennies vs. MW opponent.}
-    \label{fig:regret_adaptive_mp_vs_mw}
-    \end{figure}
+Representative regret curves are provided in Appendix~\ref{app:baselines} (MW: \cref{fig:baseline_comparison_mw}; EXP3: \cref{fig:baseline_comparison_exp3}).
 
 \section{Results}
 \label{sec:results}
@@ -427,7 +429,7 @@ We first evaluate the primary claim: regret-regularized policy gradients substan
 
 \cref{tab:adaptive_summary} quantifies performance against adaptive opponents using metrics from the final evaluation window (last 1000 rounds; steady-state behavior).
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Performance against adaptive opponents (final evaluation window: last 1000 rounds; mean $\pm$ std over 20 seeds). ``Ext. regret'' is mean per-round external regret in the final window. Exploitability is reported only for zero-sum games. Lower is better for both metrics.}
 \label{tab:adaptive_summary}
 \centering
@@ -461,6 +463,8 @@ Results for Rock-Paper-Scissors show similar patterns. PG-Vanilla has high final
 Notably, we initially tuned $\lambda_R$ on shorter runs (5,000 rounds) where $\lambda_R = 0.1$ performed best. However, extending to our full 10,000-round horizon revealed that stronger regularization ($\lambda_R = 2.0$) achieves superior asymptotic performance. This indicates $\lambda_R$ is horizon-dependent: stronger regret regularization becomes increasingly beneficial for longer interactions. This finding strengthens our main claim, as it shows RRPG's advantage grows with extended play. We report $\lambda_R = 2.0$ throughout main results.
 
 Overall, across both games, regret regularization yields substantially lower final-window regret against adaptive opponents. We discuss strategic-quality metrics (exploitability and equilibrium deviation) separately in \cref{sec:results:strategic}.
+
+\noindent Complete metric breakdowns (ER+, exploitability, instant regret) for all algorithms are provided in Appendix~\ref{app:performance} (Matching Pennies: Appendix~\ref{app:adaptive_mp_metrics}; Rock-Paper-Scissors: Appendix~\ref{app:adaptive_rps_metrics}).
 
 \subsubsection{Static Opponents}
 \label{sec:results:static}
@@ -499,6 +503,8 @@ Against the biased opponent, we see an interesting pattern. MW and PG-RM+ both a
 
 \textbf{Key observation:} Against static opponents, regret regularization does not hurt performance and may even improve stability (lower variance across seeds). The primary benefit of RRPG appears in adaptive settings where vanilla PG exhibits cycling and instability.
 
+\noindent Full learning dynamics against static opponents are provided in Appendix~\ref{app:static_dynamics}.
+
 \subsubsection{Stability and Convergence}
 
 A key qualitative benefit of regret regularization is improved stability. While vanilla PG's action probabilities oscillate substantially throughout training without settling to a stable distribution, RRPG shows smoother convergence with dampened oscillations, settling closer to the Nash equilibrium.
@@ -530,6 +536,8 @@ This stability translates to lower variance in performance metrics across seeds.
 \label{sec:results:strategic}
 
 We next report \emph{strategic quality} as a complementary claim. In our two-player zero-sum games, exploitability serves as an equilibrium-based notion of ``Nash deviation'': lower exploitability indicates the learned strategy is harder to exploit and closer to Nash equilibrium. As shown in \cref{tab:adaptive_summary}, RRPG reduces exploitability relative to vanilla PG (e.g., from $0.97$ to $0.80$ in Matching Pennies vs.\ MW and from $0.89$ to $0.53$ in RPS vs.\ MW in the final evaluation window), indicating improved strategic quality alongside regret reduction.
+
+\noindent Additional baseline-comparison curves are provided in Appendix~\ref{app:baselines}.
 
 \section{Ablations and Analysis}
 \label{sec:ablations}
@@ -569,6 +577,8 @@ Notably, entropy increases with $\lambda_R$, from 0.21 at $\lambda_R=0.1$ to 0.2
 \paragraph{Horizon dependence.}
 While $\lambda_R = 0.1$ performed best in preliminary 5,000-round experiments, our full 10,000-round runs show $\lambda_R = 2.0$ achieves lower final-window regret (0.047 vs 0.056) and exploitability (0.80 vs 0.85). This demonstrates that optimal $\lambda_R$ increases with horizon length.
 
+\noindent Full learning curves for the $\lambda_R$ sweep are provided in Appendix~\ref{app:lambda_sweep}.
+
 \subsection{Functional Form Variants}
 
 \cref{tab:variants} compares different functional forms for computing the regret-matching target distribution.
@@ -598,6 +608,8 @@ Softmax-RM ($\tau=1.0$) & 0.078 $\pm$ 0.037 & 0.86 $\pm$ 0.08 \\
 
 Overall, the choice of functional form matters less than simply incorporating regret information. All variants substantially outperform vanilla PG (1.03 regret), suggesting the key is the regret-based signal rather than the exact transformation.
 
+\noindent Full learning curves for functional form variants are provided in Appendix~\ref{app:functional_forms}.
+
 \subsection{Discounted vs. Cumulative Regret}
 
 Exponentially discounted regret with $\gamma \in \{0.95, 0.99\}$ performs comparably or slightly better than cumulative regret in our stateless games:
@@ -620,6 +632,8 @@ Discounting with $\gamma=0.95$ achieves notably lower regret (0.019 vs. 0.047), 
 
 In our stateless games with stationary opponents, discounting provides a mild benefit. In non-stationary environments where the opponent's strategy evolves, discounting may be even more important by allowing the agent to "forget" outdated regret information.
 
+\noindent Full learning curves for discounted regret variants are provided in Appendix~\ref{app:discounting}.
+
 \subsection{Progressive Schedules}
 
 We tested decaying $\lambda_R$ over time using linear and exponential schedules:
@@ -641,6 +655,8 @@ Exponential decay ($\alpha=3$) & 0.051 $\pm$ 0.014 \\
 Both schedules achieve slightly worse regret (0.048--0.051) compared to constant $\lambda_R$ (0.047), though the differences are small. Schedules may be beneficial for balancing initial regularization (to avoid early instability) with later flexibility (to fine-tune against specific opponents).
 
 However, schedules add an extra hyperparameter (decay rate) and require tuning the horizon. For simplicity and robustness, we recommend constant $\lambda_R$ unless there is a specific reason to believe the learning problem has distinct phases.
+
+\noindent Full learning curves for progressive schedules are provided in Appendix~\ref{app:schedules}.
 
 \subsection{Regret Regularization vs. Entropy Regularization}
 
@@ -671,6 +687,8 @@ The results are striking: \textbf{regret regularization is the key driver of per
 Combining both (RM+H) achieves good performance (0.047 vs MW, 0.044 vs EXP3) with reasonable computational cost. The mild entropy regularization ($\lambda_H=0.01$) helps with exploration without dominating the regret signal.
 
 This confirms that the regret-matching regularizer provides a qualitatively different signal than generic exploration bonuses. RM+ encodes counterfactual reasoning about what would have worked better, whereas entropy simply encourages randomness.
+
+\noindent Additional component-ablation learning curves are provided in Appendix~\ref{app:components}.
 
 \section{Discussion}
 
@@ -793,5 +811,267 @@ This paper presents work whose goal is to advance the field of Machine Learning,
 
 \bibliography{paper}
 \bibliographystyle{icml2025}
+
+
+\clearpage
+\appendix
+\onecolumn
+
+\section{Appendix: Additional Experimental Results}
+\label{app:additional}
+
+This appendix provides comprehensive experimental results supporting the main paper, including full performance comparisons, detailed ablation studies, and diagnostic metrics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Complete Performance Metrics}
+\label{app:performance}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Adaptive Opponents: Matching Pennies}
+\label{app:adaptive_mp_metrics}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__MP__ER+.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__MP__EXP.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__MP__IR.png} \\[\appfigvsep]
+    % \includegraphics[width=\appfigwidth]{figures/adaptive/bar__MP__TAEXP.png}
+    \caption{Complete performance metrics for Matching Pennies against adaptive opponents (MW and EXP3). From top to bottom: (a) External regret, (b) Exploitability, (c) Instant regret. All 18 algorithms shown with 95\% confidence intervals over 20 seeds.}
+    \label{fig:mp_adaptive_complete}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Adaptive Opponents: Rock-Paper-Scissors}
+\label{app:adaptive_rps_metrics}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__RPS__ER+.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__RPS__EXP.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/adaptive/bar__RPS__IR.png} \\[\appfigvsep]
+    % \includegraphics[width=\appfigwidth]{figures/adaptive/bar__RPS__TAEXP.png}
+    \caption{Complete performance metrics for Rock-Paper-Scissors against adaptive opponents. From top to bottom: (a) External regret, (b) Exploitability, (c) Instant regret. RRPG variants consistently achieve lower regret and exploitability.}
+    \label{fig:rps_adaptive_complete}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Static Opponents: Matching Pennies}
+\label{app:static_mp_metrics}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/static/bar__MP__ER+.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/bar__MP__EXP.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/bar__MP__IR.png} \\[\appfigvsep]
+    % \includegraphics[width=\appfigwidth]{figures/static/bar__MP__TAEXP.png}
+    \caption{Complete performance metrics for Matching Pennies against static opponents (Deterministic, Biased, Uniform). From top to bottom: (a) External regret, (b) Exploitability, (c) Instant regret. All learning algorithms eventually exploit static strategies.}
+    \label{fig:mp_static_complete}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Static Opponents: Rock-Paper-Scissors}
+\label{app:static_rps_metrics}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/static/bar__RPS__ER+.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/bar__RPS__EXP.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/bar__RPS__IR.png} \\[\appfigvsep]
+    % \includegraphics[width=\appfigwidth]{figures/static/bar__RPS__TAEXP.png}
+    \caption{Complete performance metrics for Rock-Paper-Scissors against static opponents. From top to bottom: (a) External regret, (b) Exploitability, (c) Instant regret. Regret regularization does not impair performance in non-adaptive settings.}
+    \label{fig:rps_static_complete}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Ablation Studies}
+\label{app:ablations}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Regret-Matching Coefficient $\lambda_R$}
+\label{app:lambda_sweep}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__rmplus_lambda_sweep.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__rmplus_lambda_sweep.png}
+    \caption{Effect of regret-matching coefficient $\lambda_R \in \{0.05, 0.1, 0.2, 0.5, 1.0, 2.0\}$ on average external regret over time. Top: Matching Pennies vs MW. Bottom: Rock-Paper-Scissors vs MW. All values in $[0.1, 2.0]$ substantially outperform vanilla PG ($\lambda_R = 0$). Stronger regularization ($\lambda_R = 2.0$) performs best at our 10,000-round horizon.}
+    \label{fig:lambda_sweep}
+\end{figure}
+
+\paragraph{Horizon-dependent optimal regularization.}
+\Cref{fig:lambda_sweep} demonstrates that optimal $\lambda_R$ is horizon-dependent. While $\lambda_R = 0.1$ performed best in preliminary 5,000-round experiments, extending to 10,000 rounds reveals that stronger regularization ($\lambda_R = 2.0$) achieves superior asymptotic performance. This suggests that longer interactions benefit from stronger alignment with regret-matching principles, while shorter horizons may prefer weaker regularization to maintain adaptation speed.
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Functional Form Variants}
+\label{app:functional_forms}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__functional_form.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__functional_form.png}
+    \caption{Comparison of functional form variants against MW opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. Variants shown: RM+ (standard clipping), RM-NoClip (shift to non-negative), and Softmax-RM with $\tau \in \{0.5, 1.0\}$. Standard RM+ achieves lowest regret, suggesting the clipping operation provides useful inductive bias.}
+    \label{fig:functional_forms_mw}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__EXP3__ER__functional_form.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__EXP3__ER__functional_form.png}
+    \caption{Functional form comparison against EXP3 opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. Results are consistent across opponent types, with RM+ clipping providing best performance.}
+    \label{fig:functional_forms_exp3}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Discounted Regret}
+\label{app:discounting}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__discounting.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__discounting.png}
+    \caption{Comparison of cumulative vs discounted regret with $\gamma \in \{0.95, 0.99\}$. Top: Matching Pennies vs MW. Bottom: Rock-Paper-Scissors vs MW. Discounting achieves notably lower regret, suggesting benefit from down-weighting early-game noise when policies are far from optimal.}
+    \label{fig:discounting}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Progressive Schedules}
+\label{app:schedules}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__schedules.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__schedules.png}
+    \caption{Comparison of constant $\lambda_R = 2.0$ vs progressive decay schedules (linear and exponential). Top: Matching Pennies vs MW. Bottom: Rock-Paper-Scissors vs MW. Constant regularization performs best in our stationary setting, but schedules may be beneficial in non-stationary environments.}
+    \label{fig:schedules}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Component Ablation}
+\label{app:components}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__ablation_components.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__ablation_components.png}
+    \caption{Ablation isolating regret regularization from entropy regularization against MW opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. RM+only ($\lambda_R = 2.0, \lambda_H = 0$) achieves very low regret, while Entropyonly ($\lambda_R = 0, \lambda_H = 0.1$) performs poorly. This confirms regret-matching regularization is the key driver of performance improvement.}
+    \label{fig:component_ablation_mw}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__EXP3__ER__ablation_components.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__EXP3__ER__ablation_components.png}
+    \caption{Component ablation against EXP3 opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. Results confirm that regret regularization provides qualitatively different signal than generic exploration bonuses.}
+    \label{fig:component_ablation_exp3}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Baseline Comparisons}
+\label{app:baselines}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ER__baseline_comparison.png}
+    \caption{Baseline comparison against MW opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. Shows MW, EXP3, vanilla PG with/without entropy, and RRPG variants. Classical no-regret algorithms (MW, EXP3) achieve near-zero regret as expected. RRPG substantially narrows the gap between vanilla neural policy gradient and classical methods.}
+    \label{fig:baseline_comparison_mw}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__EXP3__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__EXP3__ER__baseline_comparison.png}
+    \caption{Baseline comparison against EXP3 opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. Comprehensive comparison showing all baseline algorithms and RRPG variants.}
+    \label{fig:baseline_comparison_exp3}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Static Opponent Dynamics}
+\label{app:static_dynamics}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/static/curve__MP__Det__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/curve__MP__Bias__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/curve__MP__Uni__ER__baseline_comparison.png}
+    \caption{Learning dynamics for Matching Pennies against static opponents. From top to bottom: (a) Deterministic opponent, (b) Biased opponent (60\% Heads), (c) Uniform random opponent. All methods eventually exploit deterministic and biased opponents. Against uniform random, all methods converge to near-zero regret.}
+    \label{fig:static_dynamics_mp}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appfigwidth]{figures/static/curve__RPS__Det__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/curve__RPS__Bias__ER__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appfigwidth]{figures/static/curve__RPS__Uni__ER__baseline_comparison.png}
+    \caption{Learning dynamics for Rock-Paper-Scissors against static opponents. From top to bottom: (a) Deterministic opponent, (b) Biased opponent, (c) Uniform random opponent. Consistent with Matching Pennies, regret regularization does not impair exploitation of fixed strategies.}
+    \label{fig:static_dynamics_rps}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Additional Diagnostic Metrics}
+\label{app:diagnostics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Cumulative Regret}
+\label{app:diagnostics:cum_regret}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__ERcum__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__ERcum__baseline_comparison.png}
+    \caption{Cumulative external regret $R_T$ over time against MW opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. RRPG achieves sublinear growth similar to classical no-regret algorithms, while vanilla PG exhibits linear growth.}
+    \label{fig:cumulative_regret}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Instant Regret (Oracle Bound)}
+\label{app:diagnostics:instant_regret}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__MP__MW__IRavg__baseline_comparison.png} \\[\appfigvsep]
+    \includegraphics[width=\appcurvewidth]{figures/adaptive/curve__RPS__MW__IRavg__baseline_comparison.png}
+    \caption{Average cumulative instant regret (regret of best response at each round) against MW opponent. Top: Matching Pennies. Bottom: Rock-Paper-Scissors. This represents an oracle upper bound on achievable performance. All learning algorithms perform below this bound as expected.}
+    \label{fig:instant_regret}
+\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}
